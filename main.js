@@ -27,10 +27,12 @@ function carousel(){
     }
   }
 
+// CREO FUNZIONE NEXTCIRCLE PER FAR SI' CHE AL CLICK SULLA FRECCETTA NEXT SCORRANO I PALLINI VERSO AVANTI
   function nextCircle(){
     var circleA = $('.fas.fa-circle.active');
-
+    // AL CLICK SULLA FRECCETTA DESTRA, IL CIRCLEA PERDE LA CLASSE ACTIVE
     circleA.removeClass('active');
+
     if (circleA.hasClass('last')) {
       $('.fas.fa-circle.first').addClass('active');
     } else {
@@ -71,7 +73,26 @@ function carousel(){
     }
   }
 
+ // PRENDO IL CLICK SUL PALLINO E GLI RICHIAMO DENTRO LA FUNZIONE SLIDER
+ var circle = $('i.fa-circle');
+ circle.click(function(){
+   var circleA = $('.fas.fa-circle.active');
+   circleA.removeClass('active');
+   $(this).addClass('active');
 
+   if (circle.hasClass('active')) {
+     i= 0;
+     while (i < 4) {
+       console.log(img[i]);
+       i++;
+     }
+   }
+ })
+ var img = $('.images img');
+ // PER 4 VOLTE AL CLICK SUL PALLINO CON INDICE I PRENDO L'IMMAGINE CON INDICE I E LE AGGIUNGO CLASSE ACTIVE
+ // SE IL PALLINO CON INDICE I HA CLASSE ACTIVE, METTO ACTIVE ALL'IMMAGINE CON STESSO I
+ console.log(img[1]);
+ console.log(circle[0]);
 
 
 }

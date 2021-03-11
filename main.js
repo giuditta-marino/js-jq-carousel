@@ -9,6 +9,7 @@ function carousel(){
   // AL CLICK SULLA FRECCIA DESTRA DEVO RIMUOVERE LA CLASSE ACTIVE ALLA PRIMA IMMAGINE E AGGIUNGERLA ALLA SECONDA IMMAGINE
   next.click(function () {
     nextImage();
+    nextCircle();
   })
   // AL CLICK SU NEXT, RICHIAMO LA FUNZIONE NEXT IMAGE
   function nextImage(){
@@ -26,12 +27,24 @@ function carousel(){
     }
   }
 
+  function nextCircle(){
+    var circleA = $('.fas.fa-circle.active');
+
+    circleA.removeClass('active');
+    if (circleA.hasClass('last')) {
+      $('.fas.fa-circle.first').addClass('active');
+    } else {
+      circleA.next().addClass('active');
+    }
+  }
+
   // SALVO IN UNA VARIABILE LA FRECCETTA PREV
   var prev = $('.prev');
 
   // AL CLICK SU PREV, RICHIAMO LA FUNZIONE PREV IMAGE
   prev.click(function(){
     prevImage();
+    prevCircle();
   })
 
   // CREO LA FUNCTION PREV
@@ -45,9 +58,19 @@ function carousel(){
     } else {
       imageA.prev().addClass('active');
     }
-
-
   }
+
+  function prevCircle(){
+    var circleA = $('.fas.fa-circle.active');
+
+    circleA.removeClass('active');
+    if (circleA.hasClass('first')) {
+      $('.fas.fa-circle.last').addClass('active');
+    } else {
+      circleA.prev().addClass('active');
+    }
+  }
+
 
 
 

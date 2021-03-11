@@ -74,25 +74,25 @@ function carousel(){
   }
 
  // PRENDO IL CLICK SUL PALLINO E GLI RICHIAMO DENTRO LA FUNZIONE SLIDER
- var circle = $('i.fa-circle');
- circle.click(function(){
-   var circleA = $('.fas.fa-circle.active');
-   circleA.removeClass('active');
-   $(this).addClass('active');
+ var circle = $('i.fa-circle'); //variabile per selezionare i pallini
 
-   if (circle.hasClass('active')) {
-     i= 0;
-     while (i < 4) {
-       console.log(img[i]);
-       i++;
+ // AL CLICK SUL PALLINO SI ESEGUE LA FUNZIONE SEGUENTE
+ circle.click(function(){
+   var img = $('.images img'); //variabile per selezionare le immagini
+   var circleA = $('.fas.fa-circle.active');//variabile per selezionare il pallino con classe active
+   circleA.removeClass('active');//togliere la classe active dal pallino con classe active
+   $(this).addClass('active');// si aggiunge la classe active solo al pallino cliccato quando si clicca
+   console.log(this);
+
+   // DA 1 A 4
+   for (var i = 0; i < 4; i++) {
+      if (circle[i] == this) {//quando l'indice i del pallino è uguale a this, cioè al pallino cliccato
+       img.removeClass('active');//si rimuove la classe active alle immagini
+       $(img[i]).addClass('active');//si aggiunge la classe active all'immagine che ha indice i
      }
-   }
+    }
  })
- var img = $('.images img');
- // PER 4 VOLTE AL CLICK SUL PALLINO CON INDICE I PRENDO L'IMMAGINE CON INDICE I E LE AGGIUNGO CLASSE ACTIVE
- // SE IL PALLINO CON INDICE I HA CLASSE ACTIVE, METTO ACTIVE ALL'IMMAGINE CON STESSO I
- console.log(img[1]);
- console.log(circle[0]);
+
 
 
 }

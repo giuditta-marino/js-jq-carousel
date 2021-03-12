@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 function carousel(){
   // SALVO IN UNA VARIABILE LA FRECCETTA NEXT
-  var next = $('.next');
+  var next = $('.slider-wrapper .next');
 
   // AL CLICK SULLA FRECCIA DESTRA DEVO RIMUOVERE LA CLASSE ACTIVE ALLA PRIMA IMMAGINE E AGGIUNGERLA ALLA SECONDA IMMAGINE
   next.click(function () {
@@ -13,8 +13,8 @@ function carousel(){
   })
   // AL CLICK SU NEXT, RICHIAMO LA FUNZIONE NEXT IMAGE
   function nextImage(){
-    // CREO UNA VARIABILE PER SELEZIONARE L'IMMAGINE CHE HA CLASSE ACTIVE
-    var imageA = $('.images img.active');
+    // CREO UNA VARIABILE PER SELEZIONARE L'IMMAGINE CHE HA ATTUALMENTE CLASSE ACTIVE
+    var imageA = $('.slider-wrapper .images img.active');
 
     // RIMUOVO CLASSE ACTIVE DA IMAGEA
     imageA.removeClass('active');
@@ -73,12 +73,29 @@ function carousel(){
     }
   }
 
+  // PRENDIAMO EVENTO TASTO PREMUTO SU TASTIERA
+  $(document).keyup(function (e) {
+
+    // SE PREMO TASTO DESTRO, SCORRO A DESTRA
+    if (e.keyCode == "39") {
+      console.log('ok');
+      nextImage();
+      nextCircle();
+    }
+
+    // SE PREMO TASTO A SINISTRA, SCORRO A SINISTRA
+    if (e.keyCode == "37") {
+      prevImage();
+      prevCircle();
+    }
+  })
+
  // PRENDO IL CLICK SUL PALLINO E GLI RICHIAMO DENTRO LA FUNZIONE SLIDER
- var circle = $('i.fa-circle'); //variabile per selezionare i pallini
+ var circle = $('.slider-wrapper .nav i'); //variabile per selezionare i pallini
 
  // AL CLICK SUL PALLINO SI ESEGUE LA FUNZIONE SEGUENTE
  circle.click(function(){
-   var img = $('.images img'); //variabile per selezionare le immagini
+   var img = $('.slider-wrapper .images img'); //variabile per selezionare le immagini
    var circleA = $('.fas.fa-circle.active');//variabile per selezionare il pallino con classe active
    circleA.removeClass('active');//togliere la classe active dal pallino con classe active
    $(this).addClass('active');// si aggiunge la classe active solo al pallino cliccato quando si clicca
